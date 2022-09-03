@@ -1,15 +1,17 @@
 class Solution {
 public:
     int kthSmallest(vector<vector<int>>& matrix, int k) {
-        int one_d_size = matrix.size() * matrix.back().size();
-        vector<int> one_d;
-        for(int i=0;i< matrix.size();i++){
-            for(int j=0; j< matrix.back().size(); j++){
-                one_d.push_back(matrix[i][j]);
+        int m = matrix.size();
+        int n = matrix.front().size();
+        priority_queue <int, vector<int>, greater<int> > pq;
+        for(int i=0; i< m ; i++){
+            for(int j=0; j< n; j++){
+                pq.push(matrix[i][j]);
             }
         }
-        sort(one_d.begin(), one_d.end());
-        cout<<endl;
-        return one_d[k-1]; 
+        for (int i=0;i < k - 1; i++){
+            pq.pop();
+        }
+        return pq.top(); 
     }
 };
