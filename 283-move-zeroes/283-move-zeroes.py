@@ -3,19 +3,21 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # if it was zeros list then return it as it is
-        non_zeros = []
-        if not any(nums):
-            return nums
-        for i in range(len(nums)):
-            if nums[i] != 0:
-                non_zeros.append(nums[i])
-        non_zero_len = len(non_zeros)
-        for i in range(len(nums)):
-            if i >= non_zero_len:
-                nums[i] = 0
+        i, j = 0, 1
+        while j<len(nums): # 6
+            if not nums[j]:
+                if nums[i]:
+                    i += 1
+                j += 1
+            elif not nums[i]:
+                if nums[j]:
+                    nums[i], nums[j] = nums[j], nums[i]
+                    i += 1
+                    j += 1
             else:
-                nums[i] = non_zeros[i]
-        
-        
+                i += 1
+                j += 1
+        return nums
                 
+                
+            
