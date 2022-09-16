@@ -5,13 +5,13 @@ class Solution:
         res = []
         if len(nums) == 1:
             return [nums[0]**2]
-        elif nums[0] < 0: # merge two sorted lists
+        elif nums[0] < 0:
             # get the first positive number
             r = 0
             while(r < len(nums) - 1 and nums[r]<0):
                 r = r+1
             l = r - 1
-            # start merging two sorted arrays
+            # start merging two sorted lists
             while r < len(nums) and l >= 0:
                 if nums[r]**2 < nums[l]**2:
                     res.append(nums[r]**2)
